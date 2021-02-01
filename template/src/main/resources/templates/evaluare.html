@@ -1,0 +1,252 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Minisoft</title>
+
+<link th:rel="stylesheet"
+	th:href="@{/assets/tempusdominus-bootstrap-4/tempusdominus-bootstrap-4.min.css}" />
+<link th:rel="stylesheet"
+	th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} " />
+<link th:rel="stylesheet"
+	th:href="@{/webjars/font-awesome/5.11.2/css/all.css} " />
+</head>
+<body>
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+		<div class="container">
+			<a class="navbar-brand" href="#">Validarea proceselor</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive" aria-controls="navbarResponsive"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item "><a class="nav-link"
+						th:href="@{'/home?id='+${user.getId()}}">Acasa </a></li>
+					<li class="nav-item active"><a class="nav-link" href="#">Adauga
+							evaluare<span class="sr-only">(current)</span>
+					</a></li>
+					<li class="nav-item"><a class="nav-link" href="/logout">Logout</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 mt-5">
+				<h3>List procese de evaluare</h3>
+
+			</div>
+
+			<div sec:authorize="hasAnyAuthority('CREATOR', 'ADMIN')">
+				<a href="/new">Create New Product</a>
+			</div>
+			<form action="submitevaluare" method="get">
+				<h4>1. Controlul procesului de definire a unui plan strategic
+					de informatizare</h4>
+				<div class="form-group" id="group1">
+					<input type="radio" value="1" name="group1"> <label
+						class="custom-control-label" for="option1">0 Inexistent</label> <input
+						type="radio" value="2" name="group1"> <label
+						class="custom-control-label" for="option1">1 Initial/Ad
+						hoc</label> <input type="radio" value="3" name="group1"> <label
+						class="custom-control-label" for="option1">2 Repetitiv dar
+						Intuitiv</label> <input type="radio" value="4" name="group1"> <label
+						class="custom-control-label" for="option1">3 Procesul
+						Definit</label> <input type="radio" value="5" name="group1"> <label
+						class="custom-control-label" for="option1">4 Condus şi
+						Măsurabi</label> <input type="radio" value="6" name="group1"> <label
+						class="custom-control-label" for="option1">5 Optimizat</label>
+				</div>
+
+				<h4>2. Controlul procesului de definire a arhitecturii
+					informaţionale</h4>
+				<div class="form-group" id="group2">
+					<input type="radio" value="1" name="group2"> <label
+						class="custom-control-label" for="option2">0 Inexistent</label> <input
+						type="radio" value="2" name="group2"> <label
+						class="custom-control-label" for="option2">1 Initial/Ad
+						hoc</label> <input type="radio" value="3" name="group2"> <label
+						class="custom-control-label" for="option2">2 Repetitiv dar
+						Intuitiv</label> <input type="radio" value="4" name="group2"> <label
+						class="custom-control-label" for="option2">3 Procesul
+						Definit</label> <input type="radio" value="5" name="group2"> <label
+						class="custom-control-label" for="option2">4 Condus şi
+						Măsurabi</label> <input type="radio" value="6" name="group2"> <label
+						class="custom-control-label" for="option2">5 Optimizat</label>
+				</div>
+
+				<h4>3. Controlul procesului de determinare a direcţiilor de
+					dezvoltare tehnică</h4>
+				<div class="form-group" id="group3">
+					<input type="radio" value="1" name="group3"> <label
+						class="custom-control-label" for="option3">0 Inexistent</label> <input
+						type="radio" value="2" name="group3"> <label
+						class="custom-control-label" for="option3">1 Initial/Ad
+						hoc</label> <input type="radio" value="3" name="group3"> <label
+						class="custom-control-label" for="option3">2 Repetitiv dar
+						Intuitiv</label> <input type="radio" value="4" name="group3"> <label
+						class="custom-control-label" for="option3">3 Procesul
+						Definit</label> <input type="radio" value="5" name="group3"> <label
+						class="custom-control-label" for="option3">4 Condus şi
+						Măsurabi</label> <input type="radio" value="6" name="group3"> <label
+						class="custom-control-label" for="option3">5 Optimizat</label>
+				</div>
+
+				<h4>4. Controlul procesului de definire a modalităţii de
+					organizare a tehnologiei informaţiei</h4>
+				<div class="form-group" id="group4">
+					<input type="radio" value="1" name="group4"> <label
+						class="custom-control-label" for="option3">0 Inexistent</label> <input
+						type="radio" value="2" name="group4"> <label
+						class="custom-control-label" for="option3">1 Initial/Ad
+						hoc</label> <input type="radio" value="3" name="group4"> <label
+						class="custom-control-label" for="option3">2 Repetitiv dar
+						Intuitiv</label> <input type="radio" value="4" name="group4"> <label
+						class="custom-control-label" for="option3">3 Procesul
+						Definit</label> <input type="radio" value="5" name="group4"> <label
+						class="custom-control-label" for="option3">4 Condus şi
+						Măsurabi</label> <input type="radio" value="6" name="group4"> <label
+						class="custom-control-label" for="option3">5 Optimizat</label>
+				</div>
+				<h4>5. Controlul procesului de management a investiţiilor în
+					T.I.</h4>
+				<div class="form-group" id="group5">
+					<input type="radio" value="1" name="group5"> <label
+						class="custom-control-label" for="option3">0 Inexistent</label> <input
+						type="radio" value="2" name="group5"> <label
+						class="custom-control-label" for="option3">1 Initial/Ad
+						hoc</label> <input type="radio" value="3" name="group5"> <label
+						class="custom-control-label" for="option3">2 Repetitiv dar
+						Intuitiv</label> <input type="radio" value="4" name="group5"> <label
+						class="custom-control-label" for="option3">3 Procesul
+						Definit</label> <input type="radio" value="5" name="group5"> <label
+						class="custom-control-label" for="option3">4 Condus şi
+						Măsurabi</label> <input type="radio" value="6" name="group5"> <label
+						class="custom-control-label" for="option3">5 Optimizat</label>
+				</div>
+				<h4>6. Controlul procesului de comunicare a obiectivelor şi
+					direcţiilor de management</h4>
+				<div class="form-group" id="group6">
+					<input type="radio" value="1" name="group6"> <label
+						class="custom-control-label" for="option3">0 Inexistent</label> <input
+						type="radio" value="2" name="group6"> <label
+						class="custom-control-label" for="option3">1 Initial/Ad
+						hoc</label> <input type="radio" value="3" name="group6"> <label
+						class="custom-control-label" for="option3">2 Repetitiv dar
+						Intuitiv</label> <input type="radio" value="4" name="group6"> <label
+						class="custom-control-label" for="option3">3 Procesul
+						Definit</label> <input type="radio" value="5" name="group6"> <label
+						class="custom-control-label" for="option3">4 Condus şi
+						Măsurabi</label> <input type="radio" value="6" name="group6"> <label
+						class="custom-control-label" for="option3">5 Optimizat</label>
+				</div>
+				<h4>7. Controlul procesului de conducere a resurselor umane</h4>
+				<div class="form-group" id="group7">
+					<input type="radio" value="1" name="group7"> <label
+						class="custom-control-label" for="option3">0 Inexistent</label> <input
+						type="radio" value="2" name="group7"> <label
+						class="custom-control-label" for="option3">1 Initial/Ad
+						hoc</label> <input type="radio" value="3" name="group7"> <label
+						class="custom-control-label" for="option3">2 Repetitiv dar
+						Intuitiv</label> <input type="radio" value="4" name="group7"> <label
+						class="custom-control-label" for="option3">3 Procesul
+						Definit</label> <input type="radio" value="5" name="group7"> <label
+						class="custom-control-label" for="option3">4 Condus şi
+						Măsurabi</label> <input type="radio" value="6" name="group7"> <label
+						class="custom-control-label" for="option3">5 Optimizat</label>
+				</div>
+				<h4>8. Controlul procesului de asigurare a acordului cu
+					cerinţele externe</h4>
+				<div class="form-group" id="group8">
+					<input type="radio" value="1" name="group8"> <label
+						class="custom-control-label" for="option3">0 Inexistent</label> <input
+						type="radio" value="2" name="group8"> <label
+						class="custom-control-label" for="option3">1 Initial/Ad
+						hoc</label> <input type="radio" value="3" name="group8"> <label
+						class="custom-control-label" for="option3">2 Repetitiv dar
+						Intuitiv</label> <input type="radio" value="4" name="group8"> <label
+						class="custom-control-label" for="option3">3 Procesul
+						Definit</label> <input type="radio" value="5" name="group8"> <label
+						class="custom-control-label" for="option3">4 Condus şi
+						Măsurabi</label> <input type="radio" value="6" name="group8"> <label
+						class="custom-control-label" for="option3">5 Optimizat</label>
+				</div>
+				<h4>9. Controlul procesului de evaluare a riscurilor</h4>
+				<div class="form-group" id="group9">
+					<input type="radio" value="1" name="group9"> <label
+						class="custom-control-label" for="option3">0 Inexistent</label> <input
+						type="radio" value="2" name="group9"> <label
+						class="custom-control-label" for="option3">1 Initial/Ad
+						hoc</label> <input type="radio" value="3" name="group9"> <label
+						class="custom-control-label" for="option3">2 Repetitiv dar
+						Intuitiv</label> <input type="radio" value="4" name="group9"> <label
+						class="custom-control-label" for="option3">3 Procesul
+						Definit</label> <input type="radio" value="5" name="group9"> <label
+						class="custom-control-label" for="option3">4 Condus şi
+						Măsurabi</label> <input type="radio" value="6" name="group9"> <label
+						class="custom-control-label" for="option3">5 Optimizat</label>
+				</div>
+				<h4>10. Controlul procesului de administrare a proiectelor</h4>
+				<div class="form-group" id="group10">
+					<input type="radio" value="1" name="group10"> <label
+						class="custom-control-label" for="option3">0 Inexistent</label> <input
+						type="radio" value="2" name="group10"> <label
+						class="custom-control-label" for="option3">1 Initial/Ad
+						hoc</label> <input type="radio" value="3" name="group10"> <label
+						class="custom-control-label" for="option3">2 Repetitiv dar
+						Intuitiv</label> <input type="radio" value="4" name="group10"> <label
+						class="custom-control-label" for="option3">3 Procesul
+						Definit</label> <input type="radio" value="5" name="group10"> <label
+						class="custom-control-label" for="option3">4 Condus şi
+						Măsurabi</label> <input type="radio" value="6" name="group10"> <label
+						class="custom-control-label" for="option3">5 Optimizat</label>
+				</div>
+				<h4>11. Controlul procesului de administrare a calităţii</h4>
+				<div class="form-group" id="group11">
+					<input type="radio" value="1" name="group11"> <label
+						class="custom-control-label" for="option3">0 Inexistent</label> <input
+						type="radio" value="2" name="group11"> <label
+						class="custom-control-label" for="option3">1 Initial/Ad
+						hoc</label> <input type="radio" value="3" name="group11"> <label
+						class="custom-control-label" for="option3">2 Repetitiv dar
+						Intuitiv</label> <input type="radio" value="4" name="group11"> <label
+						class="custom-control-label" for="option3">3 Procesul
+						Definit</label> <input type="radio" value="5" name="group11"> <label
+						class="custom-control-label" for="option3">4 Condus şi
+						Măsurabi</label> <input type="radio" value="6" name="group11"> <label
+						class="custom-control-label" for="option3">5 Optimizat</label>
+				</div>
+				<p>
+					<input type="hidden" th:id="id" th:name="id" th:value="${user.id}" />
+					<br />
+				</p>
+				<button class="btn btn-primary" type="submit">Submit form</button>
+			</form>
+
+
+
+
+
+
+		</div>
+		<div class="row">
+			<div class="col-md-4 mt-5"></div>
+		</div>
+
+
+		<div class="col-md-4 mt-5">
+			<h3 th:text="${error}"></h3>
+		</div>
+
+
+	</div>
+
+
+</body>
+</html>
